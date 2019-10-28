@@ -1,0 +1,12 @@
+- name: Install App
+  hosts: all
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  vars:
+    temp_folder: /tmp
+  tasks:
+    - name: install app service systemd
+      template: src=../app.service dest=/etc/systemd/system/app.service
+    - include: ./nginx.yml
+    - include: ./node.yml
