@@ -7,6 +7,11 @@
     temp_folder: /tmp
   tasks:
     - name: install app service systemd
-      template: src=../app.service dest=/etc/systemd/system/app.service
+      template: src=../app.service dest=/etc/systemd/system/app.service mode=644
     - include: ./nginx.yml
     - include: ./node.yml
+    - name: restart systemd
+      service:
+        name: app
+        state: restarted
+        daemon_reload: yes

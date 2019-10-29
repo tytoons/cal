@@ -26,11 +26,8 @@
   with_items:
     - bower
     - gulp
-- name: Make sure a service is running
-  systemd:
+- name: Node.js | Start node service
+  service:
+    name: app.service
     state: started
-    name: app
-- name: Make sure a service is running
-  systemd:
-    state: reloaded
-    name: app
+    enabled: yes
