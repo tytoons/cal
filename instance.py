@@ -9,5 +9,6 @@ instances = ec2.create_instances(
      MaxCount = 1,
      InstanceType = 't3.nano',
      KeyName = 'tytoons',
-     SecurityGroups = ['ec2_node_sg']
+     SecurityGroups = ['ec2_node_sg'],
+     PrivateIpAddress = sys.argv[2] #elastic_ip
  )
